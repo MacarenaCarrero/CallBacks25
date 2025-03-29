@@ -164,10 +164,52 @@ sortLength(['cielo', 'sol', 'estrella', 'luz', 'universo']);
 
 // 1️⃣4️⃣ Camila quiere invertir palabras.   Crea una función que reciba una palabra e imprima la misma palabra en orden inverso conservando las mayúsculas y minúsculas. A Camila no le gusta el método reverse(), así que quiere hacerlo de otra manera 😊. Ejemplo: Si recibe "Mariposas" deberá imprimir "sasopiraM".
 
-const reverseWords = word => {
-  const result = word.sort((a, b) => {
-    return a, b;
+// const reverseWords = word => {
+//   const result = word.sort((a, b) => {
+//     return a, b;
+//   });
+//   console.log(result);
+// };
+// reverseWords(['Mariposas']);
+
+// 💪 Desafío Extra 1: Bego quiere simplificar un array de números de dos dígitos sumando sus dígitos. Crea una función que reciba un array de 5 números de dos dígitos y devuelva un array con la suma de los dígitos. Ejemplo: Si recibe [21, 34, 87, 10, 28], deberá imprimir [3, 7, 15, 1, 10].
+
+// const sumDigits = numbers => {
+//   const separateNumbers = numbers.filter(number => {
+//     return number.length === 2;
+//   });
+
+//   const result = separateNumbers.reduce((acc, number) => {
+//     return acc + number;
+//   });
+
+//   console.log(result);
+// };
+// sumDigits([21, 34, 87, 10, 28]);
+
+//💪 Desafío Extra 2: Macarena quiere borrar usuarios específicos. Crea una función que reciba un id y borre al usuario correspondiente del siguiente array:
+// const users = [
+// { id: "user001", name: "Juan", surname: "Pérez", age: 30 },
+// { id: "user002", name: "María", surname: "González", age: 25 },
+// { id: "user003", name: "Pedro", surname: "Sánchez", age: 35 },
+// { id: "user004", name: "Ana", surname: "Martínez", age: 28 },
+// { id: "user005", name: "Luis", surname: "López", age: 40 }
+// ];
+
+// Ejemplo: Si recibe "user003", el array quedará sin Pedro.
+
+const deleteUsers = user => {
+  const users = [
+    { id: 'user001', name: 'Juan', surname: 'Pérez', age: 30 },
+    { id: 'user002', name: 'María', surname: 'González', age: 25 },
+    { id: 'user003', name: 'Pedro', surname: 'Sánchez', age: 35 },
+    { id: 'user004', name: 'Ana', surname: 'Martínez', age: 28 },
+    { id: 'user005', name: 'Luis', surname: 'López', age: 40 }
+  ];
+
+  const result = users.filter(users => {
+    return users.id !== user;
   });
   console.log(result);
 };
-reverseWords(['Mariposas']);
+deleteUsers('user003');
