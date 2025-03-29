@@ -69,14 +69,105 @@ powersOfNumbers([2, 4, 6, 8, 10, 12, 14, 16, 18, 20]);
 
 // 7️⃣ Sabrina quiere modificar un mensaje secreto. Crea una función que reciba una palabra e imprima por consola esa palabra pero con las vocales en mayúscula. Ejemplo: Si recibe "javascript", deberá imprimir "jAvAscrIpt".
 
-const secretCode = word => {
-  let result = word.map(letter => {
-    const vowels = 'aeiou';
+// const secretCode = word => {
+//   let result = word.map(letter => {
+//     const vowels = 'aeiou';
 
-    if (vowels.includes(letter)) {
-      result += letter.toUpperCase();
+//     if (vowels.includes(letter)) {
+//        result += letter.toUpperCase();
+//     }
+//   });
+//   console.log(result);
+// };
+// secretCode(['javascript']);
+
+// 8️⃣ Macarena está buscando números importantes. Crea una función que reciba un array de 10 números y te diga si alguno es mayor de 5. deberá mostrar: "Algún número es mayor de 5" "Ningún número es mayor de 5"
+
+const overFive = numbers => {
+  //este me da true o false
+  const result = numbers.some(number => {
+    if (number > 5) {
+      return 'Algún numero es mayor de 5';
     }
   });
   console.log(result);
 };
-secretCode(['javascript']);
+overFive([2, 4, 5, 6, 0, 3, 8, 9, 16]);
+
+// 9️⃣ Camila está filtrando resultados. Crea una función que reciba un array de 5 palabras y un número, y devuelva un array con las palabras que tienen esa longitud. Ejemplo: Si recibe ['hola', 'adios', 'gato', 'perro', 'casa'], 4, deberá imprimir ['hola', 'gato', 'casa'].
+
+const wordsLengthFilter = (words, number) => {
+  const result = words.filter(word => {
+    return word.length === number;
+  });
+  console.log(result);
+};
+wordsLengthFilter(['hola', 'adios', 'gato', 'perro', 'casa'], 4);
+wordsLengthFilter(['volar', 'osos', 'adios', 'gatitos'], 5);
+
+// 🔟 Bego quiere comprobar divisores. Crea una función que reciba un array de números y un número, y devuelva un array con los números que sean divisores de ese número. Ejemplo: Si recibe [1, 2, 3, 4, 5, 6] y 2, deberá imprimir [1, 2, 4, 6].
+
+const divider = (numbers, number2) => {
+  const result = numbers.filter(number => {
+    return number % number2 === 0;
+  });
+  console.log(result);
+};
+divider([1, 2, 3, 4, 5, 6], 2);
+divider([6, 10, 90, 30], 3);
+
+// 1️⃣1️⃣ Sabrina está seleccionando usuarios.
+//Crea una función que reciba este array y te devuelva sólo los usuarios cuya edad sea menor de 30.
+
+//const users = [
+// { name: 'John', age: 25 },
+// { name: 'Jane', age: 30 },
+// { name: 'Bob', age: 20 }
+// ];
+
+// Ejemplo salida:
+// Usuarios menores de 30: John, Bob
+
+const ageUsers = users => {
+  const result = users.filter(user => {
+    if (user.age < 30) {
+      console.log(`Usuarios menos de 30: ${user.name} `);
+    }
+  });
+};
+ageUsers([
+  { name: 'John', age: 25 },
+  { name: 'Jane', age: 30 },
+  { name: 'Bob', age: 20 }
+]);
+
+// 1️⃣2️⃣ Macarena quiere comprobar números pares.   Crea una función que reciba un array con 5 números y te diga si todos son pares o no. Ejemplo: Si recibe [2, 4, 6, 8, 10], deberá impimir Todos son pares.
+
+const evenNumbers = numbers => {
+  const result = numbers.every(number => {
+    if (number % 2 === 0) {
+      console.log('Todos son pares');
+    }
+  });
+};
+evenNumbers([2, 4, 6, 8, 10]);
+
+// 1️⃣3️⃣ Abby quiere ordenar palabras por longitud.   Crea una función que reciba un array de 5 palabras y las ordene en base a su longitud, de menor a mayor. Ejemplo: Si recibe ["cielo", "sol", "estrella", "luz", "universo"], deberá imprimir ["sol", "luz", "cielo", "estrella", "universo"].
+
+const sortLength = words => {
+  const result = words.sort((a, b) => {
+    return a.length - b.length;
+  });
+  console.log(result);
+};
+sortLength(['cielo', 'sol', 'estrella', 'luz', 'universo']);
+
+// 1️⃣4️⃣ Camila quiere invertir palabras.   Crea una función que reciba una palabra e imprima la misma palabra en orden inverso conservando las mayúsculas y minúsculas. A Camila no le gusta el método reverse(), así que quiere hacerlo de otra manera 😊. Ejemplo: Si recibe "Mariposas" deberá imprimir "sasopiraM".
+
+const reverseWords = word => {
+  const result = word.sort((a, b) => {
+    return a, b;
+  });
+  console.log(result);
+};
+reverseWords(['Mariposas']);
