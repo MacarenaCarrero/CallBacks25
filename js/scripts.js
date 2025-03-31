@@ -7,6 +7,7 @@
 //16 - 8
 
 const multiplyNumbers = numbers => {
+  //Era forEach porque es por consola
   const result = numbers.map((number, index) => {
     return number * index;
   });
@@ -28,9 +29,7 @@ dividedNumbers([10, 20, 30]);
 // 3️⃣ Sabrina está trabajando con archivos de texto. Crea una función que reciba un array de palabras y devuelva un array con las mismas palabras en mayúsculas. Ejemplo: Si recibe ["hola", "mundo"], deberá imprimir ["HOLA", "MUNDO"].
 
 const uppercaseWords = words => {
-  const result = words.map(word => {
-    return word.toUpperCase();
-  });
+  const result = words.map(word => word.toUpperCase()); //funciones de flecha se puede quitar el corchete y el return porque lo lleva intrinseco. Solo una operación.
   console.log(result);
 };
 uppercaseWords(['hola', 'mundo']);
@@ -40,6 +39,7 @@ uppercaseWords(['hola', 'mundo']);
 const ingredientsList = (words, letter) => {
   const result = words.filter(word => {
     return word.charAt(0).toLowerCase() === letter.toLowerCase();
+    //return word.toUpperCase().startsWith(letter.toUpperCase()). Sería una forma mas corta.
   });
   console.log(result);
 };
@@ -70,29 +70,37 @@ powersOfNumbers([2, 4, 6, 8, 10, 12, 14, 16, 18, 20]);
 // 7️⃣ Sabrina quiere modificar un mensaje secreto. Crea una función que reciba una palabra e imprima por consola esa palabra pero con las vocales en mayúscula. Ejemplo: Si recibe "javascript", deberá imprimir "jAvAscrIpt".
 
 // const secretCode = word => {
-//   let result = word.map(letter => {
-//     const vowels = 'aeiou';
-
-//     if (vowels.includes(letter)) {
-//        result += letter.toUpperCase();
-//     }
-//   });
-//   console.log(result);
+//   const splitWord = word.split('');
+//   const vowels = 'AEIOUaeiou';
 // };
+
+// const joinWord = splitWord.reduce((acc, letter) => {
+//   if (vowels.includes(letter)) {
+//     return letter.toUpperCase();
+//   } else {
+//     return acc + letter;
+//   }
+// });
+
+// console.log(result);
+
 // secretCode(['javascript']);
 
 // 8️⃣ Macarena está buscando números importantes. Crea una función que reciba un array de 10 números y te diga si alguno es mayor de 5. deberá mostrar: "Algún número es mayor de 5" "Ningún número es mayor de 5"
 
 const overFive = numbers => {
+  //revisar este, está mal.
   //este me da true o false
   const result = numbers.some(number => {
     if (number > 5) {
-      return 'Algún numero es mayor de 5';
+      console.log('Algún numero es mayor de 5');
+    } else {
+      console.log('Ningún numero es mayor de 5');
     }
   });
-  console.log(result);
 };
 overFive([2, 4, 5, 6, 0, 3, 8, 9, 16]);
+overFive([2, 4, 0, 3]);
 
 // 9️⃣ Camila está filtrando resultados. Crea una función que reciba un array de 5 palabras y un número, y devuelva un array con las palabras que tienen esa longitud. Ejemplo: Si recibe ['hola', 'adios', 'gato', 'perro', 'casa'], 4, deberá imprimir ['hola', 'gato', 'casa'].
 
@@ -129,7 +137,8 @@ divider([6, 10, 90, 30], 3);
 // Usuarios menores de 30: John, Bob
 
 const ageUsers = users => {
-  const result = users.filter(user => {
+  //El console esta dentro del bucle.
+  const result = users.map(user => {
     if (user.age < 30) {
       console.log(`Usuarios menos de 30: ${user.name} `);
     }
@@ -164,30 +173,29 @@ sortLength(['cielo', 'sol', 'estrella', 'luz', 'universo']);
 
 // 1️⃣4️⃣ Camila quiere invertir palabras.   Crea una función que reciba una palabra e imprima la misma palabra en orden inverso conservando las mayúsculas y minúsculas. A Camila no le gusta el método reverse(), así que quiere hacerlo de otra manera 😊. Ejemplo: Si recibe "Mariposas" deberá imprimir "sasopiraM".
 
-// const reverseWords = word => {
-//   const result = word.sort((a, b) => {
-//     return a, b;
-//   });
-//   console.log(result);
-// };
-// reverseWords(['Mariposas']);
+const reverseWords = word => {
+  const splitWord = word.split('');
+
+  const result = splitWord.reduce((acc, letter) => {
+    return letter + acc;
+  });
+  console.log(result);
+};
+reverseWords('Mariposas');
 
 // 💪 Desafío Extra 1: Bego quiere simplificar un array de números de dos dígitos sumando sus dígitos. Crea una función que reciba un array de 5 números de dos dígitos y devuelva un array con la suma de los dígitos. Ejemplo: Si recibe [21, 34, 87, 10, 28], deberá imprimir [3, 7, 15, 1, 10].
 
-// const sumDigits = numbers => {
-//   const separateNumbers = numbers.filter(number => {
-//     return number.length === 2;
-//   });
+const sumDigits = numbers => {
+  numbers.forEach(number => {
+    const numberToStrings = String(number);
+    const firstDigit = Number(numberToStrings.charAt(0));
+    const secondDigit = Number(numberToStrings.charAt(1));
+    console.log(firstDigit + secondDigit);
+  });
+};
+sumDigits([21, 34, 87, 10, 28]);
 
-//   const result = separateNumbers.reduce((acc, number) => {
-//     return acc + number;
-//   });
-
-//   console.log(result);
-// };
-// sumDigits([21, 34, 87, 10, 28]);
-
-//💪 Desafío Extra 2: Macarena quiere borrar usuarios específicos. Crea una función que reciba un id y borre al usuario correspondiente del siguiente array:
+// 💪 Desafío Extra 2: Macarena quiere borrar usuarios específicos. Crea una función que reciba un id y borre al usuario correspondiente del siguiente array:
 // const users = [
 // { id: "user001", name: "Juan", surname: "Pérez", age: 30 },
 // { id: "user002", name: "María", surname: "González", age: 25 },
